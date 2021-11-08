@@ -39,6 +39,9 @@ public class PathSystem : MonoBehaviour {
         Vector2 currentPosition = startLocation.transform.position;
         gridCellList.Add(new MyGridCell(currentPosition));
 
+        GameObject go = Instantiate(new GameObject("Block"), currentPosition, Quaternion.identity);
+        BoxCollider2D bc = go.AddComponent<BoxCollider2D>();
+
         for (int i = 0; i < pathLength; i++) {
 
             int n = random.Next(100);
@@ -49,6 +52,7 @@ public class PathSystem : MonoBehaviour {
             else {
                 currentPosition = new Vector2(currentPosition.x, currentPosition.y + cellSize);
             }
+
 
             gridCellList.Add(new MyGridCell(currentPosition));
 
